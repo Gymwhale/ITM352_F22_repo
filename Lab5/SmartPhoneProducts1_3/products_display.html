@@ -5,12 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="product-styles.css" rel="stylesheet">
     <title>Smartphone Products</title>
+    <script>
+    var store_name = 'Jimwell Baja'
+    var hits = 0;
+    spins = 0;
+    </script>
+    <h1></h1>
+
 </head>
-<body>
-    <h1>Used Smart Phone Store</h1>
+<body onload="hits_span.innerHTML = hits; spins_span.innerHTML = spins;">
+    <h1> <script>document.write(store_name);
+    var hits = 0
+    var spins = 0
+    </script>'s Used Smartphone Store</h1>
+    <p style="text-align: center; font-weight: bold;">
+        Hits:<span id="hits_span">0</span>
+        Spins:<span id="spins_span">0</span>
+        Hit/Spin:<span id="hit_spin_span">0</span>
+        </p>
     <div>
     <main>
-    <section class="item" onmouseover="this.className = 'item rotate'" onclick="this.className='item'">
+    <section 
+    class="item"onmouseover="this.className = 'item rotate'; spins_span.innerHTML=spins++; hit_spin_span.innerHTML= hits_span.innerHTML/spin_span.innerHTML"
+    onclick="this.className='item'; hits_span.innerHTML= hits+=2;">
         <h2>HTC</h2>
         <p>Price: &dollar;40.00</p>
         <img src= "http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg" width="200" height="200" id="HTC">
@@ -37,5 +54,7 @@
     </section>
 </main></div>
 </body>
-<h2>Your One Stop Phone Shop</h2>
+<footer>
+    <h1>Your one stop Phone Shop - <script>document.write(store_name)</script>'s</h1>
+</footer>
 </html>
