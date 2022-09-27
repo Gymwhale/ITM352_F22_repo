@@ -1,0 +1,18 @@
+<script src="./products_data.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+</head>
+<body>
+    <table border="1">
+        <script>
+        for(var prod_num = 1; eval("typeof name" + prod_num) != 'undefined'; prod_num++)
+        document.write(`<tr><th>${prod_num}</th><th>${eval('name' + prod_num)}</th></tr>`);
+        </script>
+</table>
+</body>
+</html>
