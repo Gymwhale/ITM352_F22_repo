@@ -4,6 +4,21 @@ This code is an invoice calculator that will compute the grand total of 5 differ
 */
 
 // Product Data
+var product_quantities = [5,4,3,2,1];
+product_quantities.pop();
+
+// array of all products
+// corresponds to product_quantities array
+// product_quantities[i] is the quantity for products[i]
+products = [
+ { 'name': 'Chicken Katsu', 'price': 0.02 },
+ { 'name': 'Teri Beef', 'price': 0.05 },
+ { 'name': 'Fried Shrimp', 'price': 0.07 },
+ { 'name': 'Kalua Pig', 'price': 0.06 },
+ { 'name': 'Arizona Iced Tea', 'price': 0.10 }
+];
+
+//product 1
 var food1 = {
      name: 'Chicken Katsu',
      quantity: 8,
@@ -12,6 +27,7 @@ var food1 = {
 food1.quantity = 0;
 food1['SKU#'] = 1234;
 
+//product 2
 var food2 = {
      name: 'Teri Beef',
      quantity: 11,
@@ -46,6 +62,27 @@ var food2 = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
+<table style="border: 1px solid black;text-align: center;">
+  <tbody>
+    <tr style="border: 1px solid black;">
+    <th style="border: 1px solid black;">Product #</th>
+    <th style="border: 1px solid black;">Quantity</th>
+    <th style="border: 1px solid black;">Name</th>
+    <th style="border: 1px solid black;">Price</th>
+    <th style="border: 1px solid black;">Extended Price</th>
+  <script>
+    for(var i=0; i<product_quantities.length; i++) {
+    document.write(`<tr style="border: 1px solid black;">
+      <td style="border: 1px solid black;">${i+1}</td><td>0</td>
+      <td style="border: 1px solid black;">${product_quantities[i]}</td><td>0</td>
+      <td style="border: 1px solid black;">${products+[1]}</td><td>0</td>
+      <td style="border: 1px solid black;">${products[1]}</td><td>0</td>
+      </tr>`);
+    }
+  </script>
+  </tbody></table>
+
 <body>
     <table border="2">
         <tbody>
