@@ -4,51 +4,58 @@ This code is an invoice calculator that will compute the grand total of 5 differ
 */
 
 // Product Data
-var product_quantities = [5,4,3,2,1];
-product_quantities.pop();
-
-// array of all products
-// corresponds to product_quantities array
-// product_quantities[i] is the quantity for products[i]
+var product_quantities = [5,4,3,2,1,0];
 products = [
- { 'name': 'Chicken Katsu', 'price': 0.02 },
- { 'name': 'Teri Beef', 'price': 0.05 },
- { 'name': 'Fried Shrimp', 'price': 0.07 },
- { 'name': 'Kalua Pig', 'price': 0.06 },
- { 'name': 'Arizona Iced Tea', 'price': 0.10 }
+ { 'name': 'Chicken Katsu', 'price': 10.19 },
+ { 'name': 'Teri Beef', 'price': 11.15 },
+ { 'name': 'Fried Shrimp', 'price': 9.16 },
+ { 'name': 'Kalua Pig', 'price': 7.99 },
+ { 'name': 'Arizona Iced Tea', 'price': 2.75 }
 ];
 
+product_quantities.pop();
 //product 1
 var food1 = {
      name: 'Chicken Katsu',
      quantity: 8,
      price: 10.19
 };
-food1.quantity = 0;
+food1.quantity = 4;
 food1['SKU#'] = 1234;
 
 //product 2
 var food2 = {
      name: 'Teri Beef',
-     quantity: 11,
-     price: 10.19
+     quantity: 5,
+     price: 11.15
 };
 
-     var item3 = 'Fried Shrimp';
-     var quantity3 = 12;
-     var price3 = 9.16;
-     var item4 = 'Kalua Pig';
-     var quantity4 = 6;
-     var price4 = 7.99;
-     var item5 = 'Arizona Iced Tea';
-     var quantity5 = 23;
-     var price5 = 2.75;
+var food3 = {
+     name: 'Fried Shrimp',
+     quantity: 6,
+     price: 9.16
+};
+
+var food4 = {
+     name: 'Kalua Pig',
+     quantity: 3,
+     price: 7.99
+};
+
+var food5 = {
+     name: 'Arizona Iced Tea',
+     quantity: 11,
+     price: 2.75
+};
+
+
 //compute extended prices
      var extended_price1 = food1.quantity * food1.price;
      var extended_price2 = food2.quantity * food2.price;
-     var extended_price3 = quantity3 * price3;
-     var extended_price4 = quantity4 * price4;
-     var extended_price5 = quantity5 * price5;
+     var extended_price3 = food3.quantity * food3.price;
+     var extended_price4 = food4.quantity * food4.price;
+     var extended_price5 = food5.quantity * food5.price;
+
 //subtotal, sales tax, & grand total
      var sub_total = extended_price1 + extended_price2 + extended_price3 + extended_price4 + extended_price5;
      var sales_tax = sub_total * 0.0575;
@@ -60,29 +67,47 @@ var food2 = {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Invoice 1 - Lab 8</title>
 </head>
+<style>
+    tr:hover {background-color: yellow;}
+  </style>
+<table style="border: 1px solid black;text-align: center;"
+  onclick="
+    new_row = this.appendChild(document.createElement('tr'));
+    for(i = 1; i <= this.rows[0].cells.length; i++) {
+    new_cell = this.appendChild(document.createElement('td'));
+    new_cell.innerHTML = 'xxx';
+    }
+">
 
-<table style="border: 1px solid black;text-align: center;">
-  <tbody>
+  <tbody id="prodTableBody">
     <tr style="border: 1px solid black;">
     <th style="border: 1px solid black;">Product #</th>
     <th style="border: 1px solid black;">Quantity</th>
     <th style="border: 1px solid black;">Name</th>
     <th style="border: 1px solid black;">Price</th>
     <th style="border: 1px solid black;">Extended Price</th>
-  <script>
-    for(var i=0; i<product_quantities.length; i++) {
-    document.write(`<tr style="border: 1px solid black;">
-      <td style="border: 1px solid black;">${i+1}</td><td>0</td>
-      <td style="border: 1px solid black;">${product_quantities[i]}</td><td>0</td>
-      <td style="border: 1px solid black;">${products+[1]}</td><td>0</td>
-      <td style="border: 1px solid black;">${products[1]}</td><td>0</td>
-      </tr>`);
-    }
-  </script>
-  </tbody></table>
-
+    <script>
+      // generate table rows
+      for(var i=0; i<=product_quantities.length; i++) {
+        document.write(`
+        <tr style="border: 1px solid black;">
+          <td style="border: 1px solid black;">${i+1}</td>
+          <td style="border: 1px solid black;">${product_quantities[i]}</td>
+          <td style="border: 1px solid black;">${products[i]["name"]}</td>
+          <td style="border: 1px solid black;">\$${products[i]["price"]}</td>
+          <td style="border: 1px solid black;">\$${(product_quantities[i]*products[i]["price"]).toFixed(2)}</td>
+        </tr>
+        `);
+      }
+    </script>
+  </tbody>
+</table>
+<input type="button" value="Add New Row"
+onclick="
+  prodTableBody.addRow(prodTableBody.rows.length+1);
+  ">
 <body>
     <table border="2">
         <tbody>
@@ -118,9 +143,9 @@ var food2 = {
             //Fried Shrimp Row
             document.write(`
           <tr>
-            <td width="43%">${item3}</td>
-            <td align="center" width="11%">${quantity3}</td>
-            <td width="13%">$${price3}</td>
+            <td width="43%">${food3.name}</td>
+            <td align="center" width="11%">${food3.quantity}</td>
+            <td width="13%">$${food3.price}</td>
             <td width="54%">$${extended_price3}</td>
           </tr>
             `);
@@ -129,9 +154,9 @@ var food2 = {
             //Kalua Pig Row
             document.write(`
           <tr>
-            <td width="43%">${item4}</td>
-            <td align="center" width="11%">${quantity4}</td>
-            <td width="13%">$${price4}</td>
+            <td width="43%">${food4.name}</td>
+            <td align="center" width="11%">${food4.quantity}</td>
+            <td width="13%">$${food4.price}</td>
             <td width="54%">$${extended_price4}</td>
           </tr>
             `);
@@ -140,19 +165,20 @@ var food2 = {
             //Arizona Row
             document.write(`
           <tr>
-            <td width="43%">${item5}</td>
-            <td align="center" width="11%">${quantity5}</td>
-            <td width="13%">$${price5}</td>
+            <td width="43%">${food5.name}</td>
+            <td align="center" width="11%">${food5.quantity}</td>
+            <td width="13%">$${food5.price}</td>
             <td width="54%">$${extended_price5}</td>
           </tr>
             `);
+            //Sub-Total, Tax, & Grand Total Rows
           </script>
           <tr>
             <td colspan="4" width="100%">&nbsp;</td>
           </tr>
           <tr>
             <td style="text-align: center;" colspan="3" width="67%">Sub-total</td>
-            <td width="54%">$<script>document.write(sub_total)</script></td>
+            <td width="54%">$<script>document.write(sub_total.toFixed(2))</script></td>
           </tr>
           <tr>
             <td style="text-align: center;" colspan="3" width="67%"><span style="font-family: arial;">Tax @ 5.75%</span></td>
