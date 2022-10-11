@@ -1,10 +1,13 @@
-var year = 2002
-step1 = 02 //select last 2 digits of year (02)
-step2 = 2 //diving step1 by 4
-step3 = step1 + step2; //add your answer to step1
-step6 = step3 + 6; 
-step7 = step6 + 8;
-step9 = step7 - 1;
-step10 = 17%7;
+day = 08;
+month = 03;
+year = 2002;
 
-console.log(step10);
+step1 = 02;
+step2 = parseInt(step1/4); //0
+step3 = step2 + step1; //2
+step4 = 3; //February number on table
+step6 = step3 + step4; //5
+step7 = step6 + day; //13
+step8 = step7 - 1 ; //not a leap year, 12
+step9 = step8 % 7; //remainder of 12/7
+console.log(step9); //0
