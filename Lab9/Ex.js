@@ -1,14 +1,16 @@
-function isNonNegInt(q, returnErrors=false) {
-    errors = []; // Assume no errors at first
-    if(Number(q) != q) errors.push('Not a number!'); // Check if string is a number value
-    if(q < 0) errors.push('Negative value!'); // Check if it is non-negative
-    if(parseInt(q) != q) errors.push('Not an integer!'); // Check that it is an integer
-    return returnErrors ? errors : (errors.length == 0);
+
+function download(url, callback) {
+    setTimeout(() => {
+        // script to download the picture here
+        console.log(`Downloading ${url} ...`);
+        var picture_data = "image data:XOXOXO";
+    }, 3* 1000);
+    callback(picture_data);
 }
 
-attributes = "Jacob;20;MIS"
-parts = attributes.split(";");
-
-for (part of parts) {
-    console.log(isNonNegInt(part, true))
+function process(picture) {
+    console.log(`Processing ${picture}`);
 }
+
+let url = 'https://www.example.comt/big_pic.jpg';
+download(url, process);
