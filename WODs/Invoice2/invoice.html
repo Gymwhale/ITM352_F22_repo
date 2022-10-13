@@ -109,7 +109,7 @@ This code is an invoice calculator that will compute the grand total of 5 differ
             <td width="43%">${item5}</td>
             <td align="center" width="11%">${quantity5}</td>
             <td width="13%">$${price5}</td>
-            <td width="54%">$${extended_price5}</td>
+            <td width="54%">$${extended_price5.toFixed(2)}</td>
           </tr>
             `);
           </script>
@@ -135,6 +135,6 @@ This code is an invoice calculator that will compute the grand total of 5 differ
             <td width="54%"><strong>$<script>document.write(grand_total.toFixed(2))</script></strong></td>
           </tr>
         </tbody>
-      </table>
+      </table> 
 </body>
 </html>
