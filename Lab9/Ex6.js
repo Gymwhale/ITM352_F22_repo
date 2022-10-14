@@ -1,9 +1,16 @@
-function isNonNegInt (SubmittedVal, returnErrors = false) {
+function isNonNegInt (n, returnErrors = false) {
     errors = []; // assume no errors at first
-    if(Number(SubmittedVal) != SubmittedVal) errors.push('Not a number!'); // Check if string is a number value
-    if(SubmittedVal < 0) errors.push('Negative value!'); // Check if it is non-negative
-    if(parseInt(SubmittedVal) != SubmittedVal) errors.push('Not an integer!'); // Check that it is an integer
-    return returnErrors ? errors : (errors.length == 0);
+    if(Number(n) != n) errors.push('Not a number!'); // Check if string is a number value
+    if(n < 0) errors.push('Negative value!'); // Check if it is non-negative
+    if(parseInt(n) != n) errors.push('Not an integer!'); // Check that it is an integer
+    if(errors.length == 0)
+    {
+        return true;
+    }
+    else{
+        let message = errors.join("");
+        return message
+    }
 }
 
 attributes  =  "Jimwell;20;20.5;-19.5" ;
