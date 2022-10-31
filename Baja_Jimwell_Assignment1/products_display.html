@@ -1,38 +1,3 @@
-<script>
-    var products = [
-        {
-            //Prod 1
-            brand: "HTC",
-            price: 40.00,
-            image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg",
-        },
-        {
-            //Prod 2
-            brand: "Apple",
-            price: 75.00,
-            image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/iphone-3gs.jpg",
-        },
-        {
-            //Prod 3
-            brand: "Nokia",
-            price: 35.00,
-            image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Nokia.jpg",
-        },
-        {
-            //Prod 4
-            brand: "Samsung",
-            price: 45.00,
-            image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Samsung.jpg",
-        },
-        {
-            //Prod 5
-            brand: "Blackberry",
-            price: 10.00,
-            image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg",
-        }
-    ];
-</script>
-
 <!DOCTYPE html>
 <html>
 
@@ -47,13 +12,13 @@
 <body>
 
     <header>
-        <h1>Jimwell's Used Smart Phone Store</h1>
+        <h1>Jimwell's B.E.S.T. Apparel Store</h1>
     </header>
     <div>
         <aside>
-            <div style="font-size:4rem;text-align:center;font-weight: bold;font-style: italic; color: white">
-                We sell from
-                around the globe!
+            <div style="font-size:4rem;text-align:center;font-weight: bold;font-style: italic; color: black">
+                For your BEST 
+                Apparel NEEDS!
             </div>
         </aside>
 
@@ -65,7 +30,10 @@
                         `<section class="item">
                 <h2>${products[i].brand}</h2>
                 <p>${products[i].price}</p>
-                <img src="${products[i].image}">
+                <form method="get" action="./invoice.html">
+                    <label id="quantitylabel" name="quantity${[i]}_label">Quantity</label>
+                    <input type = "text" id="textbox" name="quantity${i}"></input>
+                <img src="./images/${products[i].image}">
             </section>
 `);
                 }
@@ -77,6 +45,8 @@
             Your One Stop For Used Phones
         </h1>
     </footer>
+    <button type="submit">Purchase</form>
+    </button>
 </body>
 
 </html>

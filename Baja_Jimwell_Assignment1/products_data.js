@@ -1,33 +1,39 @@
 var products = [
     {
     //Prod 1
-    brand: "HTC",
-    price: 40.00,
-    image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg",
+    brand: "Long Sleeve",
+    price: 15.00,
+    image: "BEST_Long_Sleeve.png",
     },
     {
     //Prod 2
-    brand: "Apple",
-    price: 75.00,
-    image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/iphone-3gs.jpg",
+    brand: "Padfolio",
+    price: 10.00,
+    image: "Padfolio.jpg",
     },
     {
     //Prod 3
-        brand: "Nokia",
-        price: 35.00,
-        image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Nokia.jpg",
+        brand: "BESTies Sticker",
+        price: 3.00,
+        image: "BESTies_Sticker.png",
     },
     {
     //Prod 4
-        brand: "Samsung",
-        price: 45.00,
-        image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Samsung.jpg",
+        brand: "BEST Shield Sticker",
+        price: 2.00,
+        image: "BEST_Shield_Sticker.png",
     },
     {
     //Prod 5
-    brand: "Blackberry",
-    price: 10.00,
-    image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg",
+    brand: "Black Dad Hat",
+    price: 20.00,
+    image: "Black_Dad_Hat.jpg",
+    },
+    {
+    //Prod 2
+    brand: "Stone Dad Hat",
+    price: 25.00,
+    image: "Stone_Dad_Hat.jpg",
     }
 ]
 
