@@ -51,6 +51,7 @@
                     `<section class="item">
             <h2>${products[i].brand}</h2>
             <p>Price: $ ${products[i].price}</p>
+            <p> In Stock: ${products[i].stock} Items </p>
             <form method="GET" action="./invoice.html">
                 <label id="quantitylabel" name="quantity${[i]}_label">Quantity</label>
                 <input type = "text" id="textbox" name="quantity${i}"></input>
