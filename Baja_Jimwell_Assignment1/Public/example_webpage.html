@@ -14,7 +14,7 @@
         h1, h2, h3, h4, h5,h6 
         {
             font-family: "Playfair Display";
-            letter-spacing: 5px;
+            letter-spacing: 2px;
         }
     </style>
 </head>
@@ -23,7 +23,7 @@
 
     <!-- Navbar (sit on top) -->
     <div class="w3-top">
-        <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:5px;">
+        <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
             <a href="#home" class="w3-bar-item w3-button">B.E.S.T. Apparel Store</a>
             <!-- Section Links are aligned right and hidden if screen is small -->
             <div class="w3-right w3-hide-small">
@@ -50,7 +50,7 @@
                 document.write(
                     `<section class="item">
             <h2>${products[i].brand}</h2>
-            <p>Price: $ ${products[i].price}</p>
+            <h4>Price: $${products[i].price}</h4>
             <p> In Stock: ${products[i].stock} Items </p>
             <form method="GET" action="./invoice.html">
                 <label id="quantitylabel" name="quantity${[i]}_label">Quantity</label>
