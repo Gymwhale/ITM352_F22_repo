@@ -3,44 +3,42 @@ var products = [
         //Item 1
         brand: "Long Sleeve",
         price: 15.00,
-        image: "BEST_Long_Sleeve.png",
-        stock: 4
+        image: "./Images/BEST_Long_Sleeve.png",
+        stock: 16
     },
     {
         //Item 2
         brand: "Padfolio",
         price: 10.00,
-        image: "Padfolio.jpg",
-        stock: 10
+        image: "./Images/Padfolio.jpg",
+        stock: 30
     },
     {
         //Item 3
         brand: "BESTies Sticker",
         price: 3.00,
-        image: "BESTies_Sticker.png",
-        stock: 25
+        image: "./Images/BESTies_Sticker.png",
+        stock: 61
     },
     {
         //Item 4
         brand: "BEST Shield Sticker",
         price: 2.00,
-        image: "BEST_Shield_Sticker.png",
-        stock: 20
+        image: "./Images/BEST_Shield_Sticker.png",
+        stock: 38
     },
     {
         //Item 5
         brand: "Black Dad Hat",
         price: 20.00,
-        image: "Black_Dad_Hat.jpg",
-        stock: 12
+        image: "./Images/Black_Dad_Hat.jpg",
+        stock: 22
     },
     {
         //Item 6
         brand: "Stone Dad Hat",
         price: 25.00,
-        image: "Stone_Dad_Hat.jpg",
-        stock: 15
+        image: "./Images/Stone_Dad_Hat.jpg",
+        stock: 19
     }
 ]
-
-console.log("Product variables loaded...")

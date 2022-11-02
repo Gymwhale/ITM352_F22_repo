@@ -2,11 +2,11 @@
 <html>
 
 <head>
-    <title>W3.CSS Template</title>
+    <title>B.E.S.T. Appparel</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="products-style.css" rel="stylesheet">
-    <script src="./products_data.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="../products_data.js"></script>
     <style>
         body {
             font-family: "Times New Roman", Georgia, Serif;
@@ -45,20 +45,18 @@
     <div class="w3-content" style="max-width:800px" id="other">
         <script>
             var i = 0;
-            //Grabs products_data.js arrays to build products
             for (i = 0; i < products.length; i++) {
-                document.write(
-                    `<section class="item">
+            document.write(
+        `<section class="item">
             <h2>${products[i].brand}</h2>
-            <h4>Price: $${products[i].price}</h4>
-            <p> In Stock: ${products[i].stock} Items </p>
-            <form method="GET" action="./invoice.html">
+            <p>$${products[i].price}.00</p>
+            <img src="${products[i].image}">
+            <form method="get" action="./invoice.html">
                 <label id="quantitylabel" name="quantity${[i]}_label">Quantity</label>
                 <input type = "text" id="textbox" name="quantity${i}"></input>
-            <img src="./images/${products[i].image}">
         </section>
 `);
-            }
+        }
         </script>
 
         <!-- Footer -->
@@ -67,6 +65,7 @@
             <button type="reset" id="reset">RESET</button>
         </form>
         </footer>
+
 
 </body>
 
