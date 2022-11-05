@@ -9,7 +9,7 @@ var products = require(__dirname + "/products.json");
 
 //All product elements from array are 0
 products.forEach((products, i) => {
-	products.stock = 0;
+	products.sold = 0;
 });
 
 // Importing parser and querystring
@@ -57,81 +57,62 @@ function checkstock(quantity_input, stock_quantity) {
 // Routing
 app.use(myParser.urlencoded({ extended: true }));
 app.post("/purchase", function (request, response) {
-	let input = request.body; // assigning req body to var
+	let input = request.body['quantity']; // assigning req body to var
 
 	// Validate inputted quantities
 
 	// validating quantities, and valid quantities
-   let valid = true;
-   let invalidblank = false;
-	let hasvalidstock = true;
-	let hasQuantities = false;
+	let valid = true;
+	let invalidblank = false;
+	let validstock = true;
+	let validquantity = false;
 	let stock_quantity = true;
+	let hell = false;
+	let ordered = "";
 
-	// Check to see that valid quantities are in stock
-	for (i = 0; i < products.length; i++) {
-		quantity = input[`quantity${i}`];
-		input_Quantities = quantity > 0;
-		valid_Quantities = hasvalidstock && isNonNegInt(quantity);
-		stock_quantity =
-			validatestock_quantity(quantity, products[i]["stock"]) &&
-			isNonNegInt(quantity);
+	// monitor all requests
+	app.all("*", function (request, response, next) {
+		console.log(request.method + " to " + request.path);
+		next();
+	});
+
+	for (let i in input) { // Iterate over all text boxes in the form.
+		quantity = input[i];
+		let item = products[i]['name'];
+		if (quantity == 0) { // assigning no value to certain items to avoid errors in invoice.html
+			ordered += item + "=" + quantity + "&";
+		} else if (isNonNegInt(quantity) && Number(quantity) <= products[i].stock) { // if quantity is true, added to ordered string
+			// We have a valid quantity. Add to the ordered string.
+			products[i].stock -= Number(quantity);
+			ordered += item + "=" + quantity + "&"; // appears in invoice.html's URL
+		} else if (isNonNegInt(quantity) != true) { // quantity is "Not a Number, Negative Value, or not an Integer"
+			valid = false;
+		} else if (Number(quantity) >= products[i].stock) { // Existing stock is less than desired quantity
+			validstock = false;
+		} else { // textbox has gone missing? or some other error
+			othererrors = true;
+		}
 	}
 
-	if (hasQuantities && hasvalidstock && stock_quantity) {
-		response.redirect("../invoice.html?" + stringified); // Send to invoice page
+	if (input.join("") == 0) { // if the array customerquantities adds up to 0, that means there are no quantities typed in
+		invalidblank = true;
+	}
+
+	// If we found an error, redirect back to the order page, if not, proceed to invoice
+
+	if (invalidblank) { // if all boxes are blank, there is an error, pops up alert
+		response.redirect('example_webpage.html?error=Invalid%20Quantity,%20No%20Quantities%20Selected!%20Please%20type%20in%20values!');
+	} else if (!valid) { // quantity is "Not a Number, Negative Value, or not an Integer", pops up alert
+		response.redirect('example_webpage.html?error=Invalid%20Quantity,%20Please%20Fix%20the%20Errors%20in%20Red%20on%20the%20Order%20Page!');
+	} else if (!validstock) { // Existing stock is less than desired quantity, pops up alert
+		response.redirect('example_webpage.html?error=Invalid%20Quantity,%20Requested%20Quantity%20Exceeds%20Stock');
+	} else if (hell) { // textbox has gone missing? or some other error, pops up alert
+		response.redirect('example_webpage.html?error=Invalid%20Quantity,%20Unknown%20Error%20has%20occured');
 	} else {
-		response.redirect("./example_webpage.html?" + stringified); // Send back to store
-	}
-
-	console.log(request.body);
+		// If everything is good, redirect to the invoice page.
+		response.redirect('invoice.html?' + ordered);
+	};
 });
-
-// monitor all requests
-app.all("*", function (request, response, next) {
-	console.log(request.method + " to " + request.path);
-	next();
-});
-
-let customerquantities = request.body[`quantitytextbox`];
-
-for (let i in customerquantities) { // Iterate over all text boxes in the form.
-    qtys = customerquantities[i];
-    let model = products[i]['name'];
-    if (qtys == 0) { // assigning no value to certain models to avoid errors in invoice.html
-        ordered += model + "=" + qtys + "&";
-    } else if (isNonNegativeInteger(qtys) && Number(qtys) <= products[i].quantity_available) { // if qtys is true, added to ordered string
-            // We have a valid quantity. Add to the ordered string.
-            products[i].quantity_available -= Number(qtys);
-            ordered += model + "=" + qtys + "&"; // appears in invoice.html's URL
-    } else if (isNonNegativeInteger(qtys) != true) { // quantity is "Not a Number, Negative Value, or not an Integer"
-        validinput = false;
-    } else if (Number(qtys) >= products[i].quantity_available) { // Existing stock is less than desired quantity
-        instock = false;
-    } else { // textbox has gone missing? or some other error
-        othererrors = true;
-    }
-}
-
-if (customerquantities.join("") == 0) { // if the array customerquantities adds up to 0, that means there are no quantities typed in
-    allblank = true;
-}
-
-// If we found an error, redirect back to the order page, if not, proceed to invoice
-
-if (allblank) { // if all boxes are blank, there is an error, pops up alert
-    response.redirect('products_display.html?error=Invalid%20Quantity,%20No%20Quantities%20Selected!%20Please%20type%20in%20values!');
-} else if (!validinput ){ // quantity is "Not a Number, Negative Value, or not an Integer", pops up alert
-    response.redirect('products_display.html?error=Invalid%20Quantity,%20Please%20Fix%20the%20Errors%20in%20Red%20on%20the%20Order%20Page!');
-} else if (!instock ){ // Existing stock is less than desired quantity, pops up alert
-    response.redirect('products_display.html?error=Invalid%20Quantity,%20Requested%20Quantity%20Exceeds%20Stock');
-} else if (othererrors) { // textbox has gone missing? or some other error, pops up alert
-    response.redirect('products_display.html?error=Invalid%20Quantity,%20Unknown%20Error%20has%20occured');
-} else {
-    // If everything is good, redirect to the invoice page.
-    response.redirect('invoice.html?' + ordered);
-};
-
 
 // start server
 app.listen(8080, () => console.log(`listening on port 8080`));

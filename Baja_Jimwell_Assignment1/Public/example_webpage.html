@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <!--w3schools bootstrap https://www.w3schools.com/bootstrap/bootstrap_templates.asp "online store", lab 12 infoserver examples, and reece nagaoka F21 :DD-->
-<script src="../products_data.json" type="text/javascript"></script>
+<script src="../products.json" type="text/javascript"></script>
 
 <head>
   <meta charset="UTF-8">
@@ -30,19 +30,16 @@
         if (the_textbox.value.trim() == '') errs = ['Quantity'];
         document.getElementById(the_textbox.name + '_label').innerHTML = errs.join(", ");
     }
-//from Assignment 1 example/reece nagaoka FW21:
-let params = (new URL(document.location)).searchParams; // get the query string which has the form data
-window.onload = function () {
 
-// form was submitted, check that quantities are valid then redirect to invoice if ok.
-if (params.has('errors')) {
-    var errors = JSON.parse(params.get('errors')); //turns string in object
-    let err_str = '';
-    for (err in errors) { //combine errors in one string
-        err_str += errors[err] + '\n';
-    }
-    alert(err_str);
-}
+/* allows for us to create an error alert based off of the results of the server's validataion*/
+let params = (new URL(document.location)).searchParams;
+
+console.log("Params=" + params); // shows what the params are in the console
+// Check for an error and if so, pop up an alert to the user
+if (params.has("error")) {
+  let err_msg = params.get("error");
+  alert(err_msg);
+} 
 
 if (params.has('quantity')) {
     var quantities = JSON.parse(params.get('quantity')); //turns string in object
@@ -51,7 +48,6 @@ if (params.has('quantity')) {
         quantity_form[`quantity${i}`].value = quantities[i];
         checkQuantityTextbox(quantity_form[`quantity${i}`]);
     }
-}
 }
 </script>
 
@@ -67,7 +63,7 @@ if (params.has('quantity')) {
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li id="logotext">Tiffany's Boba Shop</li>
+          <li id="logotext">B.E.S.T.</li>
           <li><a href="index.html">Home</a></li>
           <li><a href="example_webpage.html">Products</a></li>
         </ul>
@@ -88,11 +84,12 @@ if (params.has('quantity')) {
                 <div class="row">
                     <div class="col-sm-4">
                       <div class="panel panel-primary">
-                      <div class="panel-heading">${products[i].item}</div>
+                      <div class="panel-heading">${products[i].name}</div>
                       <div class="panel-body"><img src="${products[i].image}" style="width:100%" class="img-responsive" alt="Image"></div>
                       <div class="panel-footer">
                         <p><strong>$${products[i].price.toFixed(2)}</strong></p>
-                        <p id="quantity[${i}]_label">Quantity:</p>
+                        <p id="stock"># In Stock: ${products[i].stock}</p>
+                        <p id="sold"># Sold: ${products[i].sold}</p>
                         <input type="text" placeholder="Enter desired quantity here" name="quantity[${i}]" onkeyup="checkQuantityTextbox(this);">
                     </div>
                   </div>
@@ -106,6 +103,6 @@ if (params.has('quantity')) {
 </body>
 <div class="footer">
   </br>
-  <p>&copy; B.E.S.T. Apparel Store/p>
+  <p>&copy; B.E.S.T. Apparel Store </p>
 </div>
 </html>
