@@ -2,42 +2,42 @@
     {
         "name": "Long Sleeve",
         "price": 15.00,
-        "image": "./Images/BEST_Long_Sleeve.png",
+        "image": "https://raw.githubusercontent.com/Gymwhale/Assignment-Public-Files/main/BEST_Long_Sleeve.png",
         "stock": 16,
         "sold": 0
     },
     {
         "name": "Padfolio",
         "price": 10.00,
-        "image": "./Images/Padfolio.jpg",
+        "image": "https://raw.githubusercontent.com/Gymwhale/Assignment-Public-Files/main/Padfolio.jpg",
         "stock": 30,
         "sold": 0
     },
     {
         "name": "BESTies Sticker",
         "price": 3.00,
-       "image": "./Images/BESTies_Sticker.png",
+        "image": "https://raw.githubusercontent.com/Gymwhale/Assignment-Public-Files/main/BESTies_Sticker.png",
         "stock": 61,
         "sold": 0
     },
     {
-        "name": "BEST Shield Sticker",
+        "name": "Shield Sticker",
         "price": 2.00,
-        "image": "./Images/BEST_Shield_Sticker.png",
+        "image": "https://raw.githubusercontent.com/Gymwhale/Assignment-Public-Files/main/BEST_Shield_Sticker.png",
         "stock": 38,
         "sold": 0
     },
     {
         "name": "Black Dad Hat",
         "price": 20.00,
-        "image": "./Images/Black_Dad_Hat.jpg",
+        "image": "https://raw.githubusercontent.com/Gymwhale/Assignment-Public-Files/main/Black_Dad_Hat.jpg",
         "stock": 22,
         "sold": 0
     },
     {
         "name": "Stone Dad Hat",
         "price": 25.00,
-        "image": "./Images/Stone_Dad_Hat.jpg",
+        "image": "https://raw.githubusercontent.com/Gymwhale/Assignment-Public-Files/main/Stone_Dad_Hat.jpg",
         "stock": 19,
         "sold": 0
     }
